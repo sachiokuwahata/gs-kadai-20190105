@@ -88,6 +88,7 @@ class ViewController: UIViewController ,UIImagePickerControllerDelegate , UINavi
     override func viewDidLoad() {
         print("hogehoge")
         print("gogogo")
+        print("tototo")
         super.viewDidLoad()
         clearUIButton.isEnabled = false
 
