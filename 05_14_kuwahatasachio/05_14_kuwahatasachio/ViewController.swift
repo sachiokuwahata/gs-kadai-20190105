@@ -101,6 +101,7 @@ class ViewController: UIViewController ,UIImagePickerControllerDelegate , UINavi
             case .notDetermined: break
             }
         }
+        print("lalala")
     }
 
     // カメラ作動中のCanselButtonの挙動
