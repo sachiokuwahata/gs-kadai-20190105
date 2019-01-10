@@ -89,6 +89,7 @@ class ViewController: UIViewController ,UIImagePickerControllerDelegate , UINavi
         print("hogehoge")
         print("gogogo")
         print("tototo")
+        print("lalala")
         super.viewDidLoad()
         clearUIButton.isEnabled = false
 
