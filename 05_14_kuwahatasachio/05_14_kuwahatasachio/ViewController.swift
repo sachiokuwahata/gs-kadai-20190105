@@ -27,7 +27,9 @@ class ViewController: UIViewController ,UIImagePickerControllerDelegate , UINavi
     @IBAction func startButton(_ sender: Any) {
         
         startUIButton.isEnabled = false
-        
+
+    var images = ["img_1th","img_2th","img_3th","img_4th","img_5th","img_6th","img_7th","img_8th","img_9th","img_10th"]
+    
         timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { (timer) in
             self.count = self.count - 0.01
             self.timerTextLabel.text = String(format: "%.1f", self.count)
@@ -40,19 +42,32 @@ class ViewController: UIViewController ,UIImagePickerControllerDelegate , UINavi
             switch self.count {
             case (3.99...4.01) :
                 print("残り4秒")
-                self.displayImageView.image = UIImage(named: "img_1th")
+                let int = Int.random(in: 0...9)
+                self.displayImageView.image = UIImage(named: images[int])
+            // self.displayImageView.image = UIImage(named: "img_1th")
             case (2.99...3.01) :
                 print("残り3秒")
-                self.displayImageView.image = UIImage(named: "img_2th")
+                let int = Int.random(in: 0...9)
+                self.displayImageView.image = UIImage(named: images[int])
+            // self.displayImageView.image = UIImage(named: "img_2th")
             case (1.99...2.01) :
                 print("残り2秒")
-                self.displayImageView.image = UIImage(named: "img_3th")
+                let int = Int.random(in: 0...9)
+                self.displayImageView.image = UIImage(named: images[int])
+            // self.displayImageView.image = UIImage(named: "img_3th")
             case (0.99...1.01) :
                 print("残り1秒")
-                self.displayImageView.image = UIImage(named: "img_4th")
+                let int = Int.random(in: 0...9)
+                self.displayImageView.image = UIImage(named: images[int])
+
+            // self.displayImageView.image = UIImage(named: "img_4th")
             case (0.01...0.02) :
                 self.timer.invalidate()
-                self.displayImageView.image = UIImage(named: "img_5th")
+
+                let int = Int.random(in: 0...9)
+                self.displayImageView.image = UIImage(named: images[int])
+                
+                // self.displayImageView.image = UIImage(named: "img_5th")
 
                 let sourceType: UIImagePickerController.SourceType = UIImagePickerController.SourceType.camera
                 
