@@ -40,16 +40,19 @@ class ViewController: UIViewController ,UIImagePickerControllerDelegate , UINavi
             switch self.count {
             case (3.99...4.01) :
                 print("残り4秒")
-                self.displayImageView.image = UIImage(named: "channnel_abematv")
+                self.displayImageView.image = UIImage(named: "img_1th")
             case (2.99...3.01) :
                 print("残り3秒")
-                self.displayImageView.image = UIImage(named: "channnel_hajime")
+                self.displayImageView.image = UIImage(named: "img_2th")
             case (1.99...2.01) :
                 print("残り2秒")
-                self.displayImageView.image = UIImage(named: "channnel_hikakin")
+                self.displayImageView.image = UIImage(named: "img_3th")
+            case (0.99...1.01) :
+                print("残り1秒")
+                self.displayImageView.image = UIImage(named: "img_4th")
             case (0.01...0.02) :
                 self.timer.invalidate()
-                self.displayImageView.image = UIImage(named: "channnel_hikaru")
+                self.displayImageView.image = UIImage(named: "img_5th")
 
                 let sourceType: UIImagePickerController.SourceType = UIImagePickerController.SourceType.camera
                 
@@ -87,9 +90,6 @@ class ViewController: UIViewController ,UIImagePickerControllerDelegate , UINavi
     
     override func viewDidLoad() {
         print("hogehoge")
-        print("gogogo")
-        print("tototo")
-        print("lalala")
         super.viewDidLoad()
         clearUIButton.isEnabled = false
 
@@ -101,7 +101,6 @@ class ViewController: UIViewController ,UIImagePickerControllerDelegate , UINavi
             case .notDetermined: break
             }
         }
-        print("lalala")
     }
 
     // カメラ作動中のCanselButtonの挙動

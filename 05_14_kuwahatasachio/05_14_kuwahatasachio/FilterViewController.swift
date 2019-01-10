@@ -42,7 +42,6 @@ class FilterViewController: UIViewController {
             let ImageStockVC = storyboard!.instantiateViewController(withIdentifier: "ImageStockViewController") as! ImageStockViewController
             
             // ImageStockVC.passImage = editImageView.image!
-            
             // let imageDate:NSData = UserDefaults.standard.object(forKey: "imageData") as! NSData
             // ImageStockVC.passImage = UIImage(data:imageDate as Data)!
             
@@ -64,10 +63,10 @@ class FilterViewController: UIViewController {
         
         editImageView.image = image2
 
-        UserDefaults.standard.set(editImageView.image!.jpegData(compressionQuality: 0.8), forKey: "imageData1")
+        UserDefaults.standard.set(editImageView.image!.jpegData(compressionQuality: 0.8), forKey: "imageData")
 
-        let imageDate:NSData = UserDefaults.standard.object(forKey: "imageData1") as! NSData
-        fixedImageView.image = UIImage(data:imageDate as Data)
+//        let imageDate:NSData = UserDefaults.standard.object(forKey: "imageData1") as! NSData
+//        fixedImageView.image = UIImage(data:imageDate as Data)
         
         
     }
@@ -87,10 +86,10 @@ class FilterViewController: UIViewController {
         
         editImageView.image = image2
 
-        UserDefaults.standard.set(editImageView.image!.jpegData(compressionQuality: 0.8), forKey: "imageData2")
+        UserDefaults.standard.set(editImageView.image!.jpegData(compressionQuality: 0.8), forKey: "imageData")
 
-        let imageDate:NSData = UserDefaults.standard.object(forKey: "imageData2") as! NSData
-        fixedImageView.image = UIImage(data:imageDate as Data)
+//        let imageDate:NSData = UserDefaults.standard.object(forKey: "imageData2") as! NSData
+//        fixedImageView.image = UIImage(data:imageDate as Data)
 
         
     }
@@ -110,10 +109,10 @@ class FilterViewController: UIViewController {
         
         editImageView.image = image2
 
-        UserDefaults.standard.set(editImageView.image!.jpegData(compressionQuality: 0.8), forKey: "imageData3")
+        UserDefaults.standard.set(editImageView.image!.jpegData(compressionQuality: 0.8), forKey: "imageData")
 
-        let imageDate:NSData = UserDefaults.standard.object(forKey: "imageData3") as! NSData
-        fixedImageView.image = UIImage(data:imageDate as Data)
+//        let imageDate:NSData = UserDefaults.standard.object(forKey: "imageData3") as! NSData
+//        fixedImageView.image = UIImage(data:imageDate as Data)
 
         
     }
@@ -136,15 +135,11 @@ class FilterViewController: UIViewController {
         
         UserDefaults.standard.set(editImageView.image!.jpegData(compressionQuality: 0.8), forKey: "imageData")
 
-        let imageDate:NSData = UserDefaults.standard.object(forKey: "imageData") as! NSData
-        fixedImageView.image = UIImage(data:imageDate as Data)
+//        let imageDate:NSData = UserDefaults.standard.object(forKey: "imageData") as! NSData
+//        fixedImageView.image = UIImage(data:imageDate as Data)
 
         
     }
-
-
-    
-    @IBOutlet weak var fixedImageView: UIImageView!
     
 
 }
