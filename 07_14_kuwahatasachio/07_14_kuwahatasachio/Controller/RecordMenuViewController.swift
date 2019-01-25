@@ -15,6 +15,7 @@ class RecordMenuViewController: UIViewController {
     var weightText = String()
     var numberText = String()
     var menuText = String()
+    var dateText = String()
     
 //    let Input = InputViewController()
     var userName = String()
@@ -81,10 +82,12 @@ class RecordMenuViewController: UIViewController {
         menuText = UserDefaults.standard.object(forKey: "selectMenu") as! String
         weightText = UserDefaults.standard.object(forKey: "selectWeight") as! String
         numberText = UserDefaults.standard.object(forKey: "selectNumber") as! String
+        dateText = UserDefaults.standard.object(forKey: "selectDate") as! String
         
         menuTextField.text = menuText
         weightTextField.text = weightText
         numberTextField.text = numberText
+        dateTextField.text = dateText
     }
     
     override func viewDidLoad() {
@@ -99,26 +102,19 @@ class RecordMenuViewController: UIViewController {
     var selectWeight = String()
     
     @IBAction func numberButton(_ sender: Any) {
-        
         let inputRecordvol2 = storyboard!.instantiateViewController(withIdentifier: "inputRecordvol2")
         self.present(inputRecordvol2,animated: true, completion: nil)
-
     }
-    
     
     @IBAction func menuButton(_ sender: Any) {
-
         let inputMenu = storyboard!.instantiateViewController(withIdentifier: "inputMenu")
         self.present(inputMenu,animated: true, completion: nil)
-
     }
     
-// Button削除
-//    @IBAction func weightButton(_ sender: Any) {
-//
-//        let inputRecord = storyboard!.instantiateViewController(withIdentifier: "inputRecord")
-//        self.present(inputRecord,animated: true, completion: nil)
-//
-//    }
+    
+    @IBAction func dateButton(_ sender: Any) {
+        let inputDate = storyboard!.instantiateViewController(withIdentifier: "inputDate")
+        self.present(inputDate,animated: true, completion: nil)
+    }
     
 }

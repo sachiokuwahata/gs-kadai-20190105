@@ -38,12 +38,13 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
         let weightTextLabel = cell.viewWithTag(3) as! UILabel
         let numberTextLabel = cell.viewWithTag(4) as! UILabel
         let dateTextLabel = cell.viewWithTag(5) as! UILabel
-
+        let nameTextLabel = cell.viewWithTag(6) as! UILabel
         
         menuTextLabel.text = posts[indexPath.row].menu
         weightTextLabel.text = posts[indexPath.row].weight
         numberTextLabel.text = posts[indexPath.row].number
         dateTextLabel.text = posts[indexPath.row].date
+        nameTextLabel.text = self.userName
         // URLへ変換
         let imageurl = URL(string: self.posts[indexPath.row].imageData as String)!
         // imageDataをimageViewへ設定

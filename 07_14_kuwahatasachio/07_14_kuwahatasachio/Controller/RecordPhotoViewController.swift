@@ -78,7 +78,7 @@ class RecordPhotoViewController: UIViewController ,UIImagePickerControllerDelega
         UserDefaults.standard.set("0", forKey: "selectWeight")
         UserDefaults.standard.set("0", forKey: "selectNumber")
         UserDefaults.standard.set("---------", forKey: "selectMenu")
-        
+        UserDefaults.standard.set("yyyy年mm月dd日", forKey: "selectDate")
     }
     
     

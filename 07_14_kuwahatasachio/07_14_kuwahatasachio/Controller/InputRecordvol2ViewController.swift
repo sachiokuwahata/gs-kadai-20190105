@@ -13,8 +13,8 @@ class InputRecordvol2ViewController: UIViewController ,UIPickerViewDelegate,UIPi
 
     @IBOutlet weak var pickerview2: UIPickerView!
 
-    let dataList_array1 = ["自重","5","10","15","20","25","30","35","40","45","50","55","60"]
-    let dataList_array2 = ["5","10","15","20","25","30","35","40"]
+    let dataList_array1 = ["","自重","5","10","15","20","25","30","35","40","45","50","55","60"]
+    let dataList_array2 = ["","5","10","15","20","25","30","35","40"]
     
     var selectNumber = String()
     var selectWeight = String()
@@ -65,8 +65,8 @@ class InputRecordvol2ViewController: UIViewController ,UIPickerViewDelegate,UIPi
         pickerview2.dataSource = self
 //        pickerview2.tag = 2
 //        pickerview2.selectRow(0, inComponent: 0, animated: true) // 初期値
-        pickerview2.selectRow(1, inComponent: 0, animated: true)
-        pickerview2.selectRow(2, inComponent: 1, animated: true)
+        pickerview2.selectRow(0, inComponent: 0, animated: true)
+        pickerview2.selectRow(0, inComponent: 1, animated: true)
         
         
     }

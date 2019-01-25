@@ -28,6 +28,7 @@
 		1C8B6F3121F58C29003CA72B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C8B6F3021F58C29003CA72B /* GoogleService-Info.plist */; };
 		1C8B6F3521F5957D003CA72B /* RecordPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8B6F3421F5957D003CA72B /* RecordPhotoViewController.swift */; };
 		1C8B6F3721F59591003CA72B /* RecordMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8B6F3621F59591003CA72B /* RecordMenuViewController.swift */; };
+		1CF85E4921FBC84A002CB52B /* inputDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF85E4821FBC84A002CB52B /* inputDateViewController.swift */; };
 		D9778227DBE1D0FCAAE63D91 /* Pods_07_14_kuwahatasachio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B0A075A845D872CDBE286ED /* Pods_07_14_kuwahatasachio.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		1C8B6F3021F58C29003CA72B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1C8B6F3421F5957D003CA72B /* RecordPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPhotoViewController.swift; sourceTree = "<group>"; };
 		1C8B6F3621F59591003CA72B /* RecordMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMenuViewController.swift; sourceTree = "<group>"; };
+		1CF85E4821FBC84A002CB52B /* inputDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inputDateViewController.swift; sourceTree = "<group>"; };
 		7B0A075A845D872CDBE286ED /* Pods_07_14_kuwahatasachio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_07_14_kuwahatasachio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85A92FDF8D42DB222F68C1FA /* Pods-07_14_kuwahatasachio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-07_14_kuwahatasachio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-07_14_kuwahatasachio/Pods-07_14_kuwahatasachio.debug.xcconfig"; sourceTree = "<group>"; };
 		8790B3E7A52BABEA2CEC5186 /* Pods-07_14_kuwahatasachio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-07_14_kuwahatasachio.release.xcconfig"; path = "Pods/Target Support Files/Pods-07_14_kuwahatasachio/Pods-07_14_kuwahatasachio.release.xcconfig"; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				1C8B6F1021F5756D003CA72B /* ViewController.swift */,
 				1C1FB04C21F861A700F92866 /* InputMenuViewController.swift */,
 				1C1FB04921F8471A00F92866 /* InputRecordvol2ViewController.swift */,
+				1CF85E4821FBC84A002CB52B /* inputDateViewController.swift */,
 				1C8B6F3421F5957D003CA72B /* RecordPhotoViewController.swift */,
 				1C8B6F3621F59591003CA72B /* RecordMenuViewController.swift */,
 				1C6B4DAB21F97BF300AB4FEA /* TotalingViewController.swift */,
@@ -325,6 +328,7 @@
 				1C7CD10A21F7206A00B28AF2 /* InputViewController.swift in Sources */,
 				1C8B6F1121F5756D003CA72B /* ViewController.swift in Sources */,
 				1C1FB04D21F861A700F92866 /* InputMenuViewController.swift in Sources */,
+				1CF85E4921FBC84A002CB52B /* inputDateViewController.swift in Sources */,
 				1C6B4DAC21F97BF300AB4FEA /* TotalingViewController.swift in Sources */,
 				1C8B6F2321F579E1003CA72B /* FeedViewController.swift in Sources */,
 				1C8B6F2F21F586A0003CA72B /* TableButton.swift in Sources */,
