@@ -56,8 +56,9 @@ class RecordMenuViewController: UIViewController {
         RecordViewController.shared.dataSet(date: date!,weight: weight!,number: number!,menu: menu!,keys: keys,userName:userName,imageData:data)
 
         let feedVC = self.storyboard?.instantiateViewController(withIdentifier: "feedVC") as! FeedViewController
-        self.navigationController?.pushViewController(feedVC, animated: true)
-
+        self.navigationController?.popViewController(animated: true)
+        
+        
 //        if let tabvc = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController {
 //            DispatchQueue.main.async {
 //                tabvc.selectedIndex = 0
