@@ -58,6 +58,17 @@ class RecordMenuViewController: UIViewController {
         let feedVC = self.storyboard?.instantiateViewController(withIdentifier: "feedVC") as! FeedViewController
         self.navigationController?.pushViewController(feedVC, animated: true)
 
+//        if let tabvc = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController {
+//            DispatchQueue.main.async {
+//                tabvc.selectedIndex = 0
+//            }
+//        }
+//        // 移動先ViewControllerのインスタンスを取得（ストーリーボードIDから）
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let dstView = storyboard.instantiateViewController(withIdentifier: "feedVC")
+//
+//        self.tabBarController?.navigationController?.present(dstView, animated: true, completion: nil)
+
     }
 
     

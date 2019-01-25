@@ -318,7 +318,7 @@
         <!--Record Photo View Controller-->
         <scene sceneID="B0q-Qv-F0O">
             <objects>
-                <viewController id="Ajx-Li-bKD" customClass="RecordPhotoViewController" customModule="_7_14_kuwahatasachio" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecordPhotoVC" id="Ajx-Li-bKD" customClass="RecordPhotoViewController" customModule="_7_14_kuwahatasachio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bgb-M4-bRU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
