@@ -57,7 +57,7 @@ class RecordMenuViewController: UIViewController {
 
         let feedVC = self.storyboard?.instantiateViewController(withIdentifier: "feedVC") as! FeedViewController
         self.navigationController?.popViewController(animated: true)
-        
+        self.tabBarController!.selectedIndex = 2
         
 //        if let tabvc = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController {
 //            DispatchQueue.main.async {
