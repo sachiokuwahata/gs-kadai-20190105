@@ -42,10 +42,10 @@ class RecordMenuViewController: UIViewController {
     
     @IBAction func saveButton(_ sender: Any) {
         
-        let menu = menuTextField.text
-        let number = numberTextField.text
-        let weight = weightTextField.text
-        let date = dateTextField.text
+        guard let menu = menuTextField.text else{ return }
+        guard let number = numberTextField.text else{ return }
+        guard let weight = weightTextField.text else{ return }
+        guard let date = dateTextField.text else{ return }
         let userName = self.userName
         let keys = "damyy"
 
@@ -54,22 +54,12 @@ class RecordMenuViewController: UIViewController {
             data = image.jpegData(compressionQuality: 0.01)! as NSData
         }
 
-        RecordViewController.shared.dataSet(date: date!,weight: weight!,number: number!,menu: menu!,keys: keys,userName:userName,imageData:data)
+            RecordViewController.shared.dataSet(date: date,weight: weight,number: number,menu: menu,keys: keys,userName:userName,imageData:data)
 
         let feedVC = self.storyboard?.instantiateViewController(withIdentifier: "feedVC") as! FeedViewController
         self.navigationController?.popViewController(animated: true)
         self.tabBarController!.selectedIndex = 2
         
-//        if let tabvc = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController {
-//            DispatchQueue.main.async {
-//                tabvc.selectedIndex = 0
-//            }
-//        }
-//        // 移動先ViewControllerのインスタンスを取得（ストーリーボードIDから）
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let dstView = storyboard.instantiateViewController(withIdentifier: "feedVC")
-//
-//        self.tabBarController?.navigationController?.present(dstView, animated: true, completion: nil)
 
     }
 

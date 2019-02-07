@@ -46,28 +46,31 @@ class TotalingViewController: UIViewController ,UITableViewDataSource,UITableVie
     
     private func prepareData() {
         let Dic = Dictionary(grouping: self.posts, by: { $0.menu })
-        
-        var menukeys = [String](Dic.keys)
+        print(Dic)
+        let menukeys = [String](Dic.keys)
         if menukeys == nil { return }
+        
+        print(menukeys)
 
         self.totals = [Toatal]()
-        
-        for (menukey) in menukeys {
+
+        for menukey in menukeys {
             self.totaln = Toatal()
-            
-            var totalnumber = Int()
-            
+
+            var totalnumber: Int = 0
+
             let menuNumCount = Dic[menukey]?.count as! Int
-            let menuNum = menuNumCount - 1
-            for i in 0...menuNum{
+            print("menuNumCount: \(menuNumCount)")
+            //let menuNum = menuNumCount - 1
+            for i in 0..<menuNumCount{
                 print("menukey: \(menukey)")
-                print("Dic[menukey]: \(Dic[menukey]?[i]) + / + \(i)")
-                print("Dic[menukey]weight: \(Dic[menukey]?[i].number)")
-                
+                print("Dic[menukey]: \(String(describing: Dic[menukey]?[i])) + / + \(i)")
+                print("Dic[menukey]number: \(String(describing: Dic[menukey]?[i].number))")
+                                
                 totalnumber = totalnumber + Int((Dic[menukey]?[i].number)!)!
                 
             }
-            
+
             self.totaln.menu = menukey
             self.totaln.number = totalnumber
             self.totals.append(self.totaln)
