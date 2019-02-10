@@ -23,7 +23,7 @@ class ViewController: UIViewController  ,CLLocationManagerDelegate ,GMSMapViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchPost()
+//        fetchPost()
 
         let lat = self.defaultLatitude
         let lng = self.defaultLongitude
@@ -47,20 +47,9 @@ class ViewController: UIViewController  ,CLLocationManagerDelegate ,GMSMapViewDe
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let num = TaskCollection.shared.tasks.count
-        for i in 0..<num {
-
-            let marker = GMSMarker()
-
-            let lat = Double(TaskCollection.shared.tasks[i].latitude)
-            let lon = Double(TaskCollection.shared.tasks[i].longitude)
-            marker.position.latitude = lat!
-            marker.position.longitude = lon!
-            marker.title = TaskCollection.shared.tasks[i].name
-
-            marker.map = mapView
-        }
         
+        //　非同期処理をした関数
+        self.fetchMarkerup(completion:marker)
         
 //        // 非同期処理を試みたんだがNGだなぁ....
 //        self.doMoreAfterConcurretQueuesUsingDispatchGroup()
@@ -79,10 +68,10 @@ class ViewController: UIViewController  ,CLLocationManagerDelegate ,GMSMapViewDe
         
         return true
     }
-
     
-    func fetchPost() {
-        
+    // 非同期処理のための関数
+    func fetchMarkerup(completion:@escaping ()->Void) {
+
         var key = "0c7a7a07f8484b6add7109fb9eec417f"
         var PREF = "PREF13"  //&pref=\(PREF)
         let range = 3
@@ -114,47 +103,66 @@ class ViewController: UIViewController  ,CLLocationManagerDelegate ,GMSMapViewDe
                     TaskCollection.shared.addTask(name:name, id:id, latitude:latitude, longitude:longitude)
                     print("店舗")
                 }
+                // 終了後に実行したい関数
+                completion()
         }
-
     }
     
-    // 非同期処理のための関数を作成したが、成功できず
-    func doMoreAfterConcurretQueuesUsingDispatchGroup() {
-        let group = DispatchGroup()
+    // Markを表示させる関数
+    func marker(){
+                let num = TaskCollection.shared.tasks.count
+                for i in 0..<num {
         
-        group.enter()
-        DispatchQueue.global(qos: .default).async {
-            self.fetchPost()
-            group.leave()
-        }
-        group.notify(queue: DispatchQueue.global(qos: .default)) {
-            let num = TaskCollection.shared.tasks.count
-            print("すべてのキューの処理が完了しました")
-            for i in 0..<num {
-                
-                let marker = GMSMarker()
-                
-                let lat = Double(TaskCollection.shared.tasks[i].latitude)
-                let lon = Double(TaskCollection.shared.tasks[i].longitude)
-
-                let label = UILabel(frame: CGRect(x:0.0, y:0.0, width:20.0, height:20.0))
-
-                label.font = UIFont.systemFont(ofSize: 10.0)
-                label.textAlignment = .center
-                label.textColor = .white
-                let markerView = UIView(frame: CGRect(x:0.0, y:0.0, width:30.0, height:30.0))
-                markerView.layer.cornerRadius = 30.0
-                markerView.backgroundColor = .red
-                markerView.addSubview(label)
-                marker.iconView = markerView
-                
-                marker.position.latitude = lat!
-                marker.position.longitude = lon!
-                marker.title = TaskCollection.shared.tasks[i].name
-                marker.map = self.mapView
-            }
-        }
+                    let marker = GMSMarker()
+        
+                    let lat = Double(TaskCollection.shared.tasks[i].latitude)
+                    let lon = Double(TaskCollection.shared.tasks[i].longitude)
+                    marker.position.latitude = lat!
+                    marker.position.longitude = lon!
+                    marker.title = TaskCollection.shared.tasks[i].name
+        
+                    marker.map = mapView
+                }
     }
+    
+    
+    // 非同期処理のための関数を作成したが、成功できず
+//    func doMoreAfterConcurretQueuesUsingDispatchGroup() {
+//        let group = DispatchGroup()
+//
+//        group.enter()
+//        DispatchQueue.global(qos: .default).async {
+//            self.fetchPost()
+//            group.leave()
+//        }
+//        group.notify(queue: DispatchQueue.global(qos: .default)) {
+//            let num = TaskCollection.shared.tasks.count
+//            print("すべてのキューの処理が完了しました")
+//            for i in 0..<num {
+//
+//                let marker = GMSMarker()
+//
+//                let lat = Double(TaskCollection.shared.tasks[i].latitude)
+//                let lon = Double(TaskCollection.shared.tasks[i].longitude)
+//
+//                let label = UILabel(frame: CGRect(x:0.0, y:0.0, width:20.0, height:20.0))
+//
+//                label.font = UIFont.systemFont(ofSize: 10.0)
+//                label.textAlignment = .center
+//                label.textColor = .white
+//                let markerView = UIView(frame: CGRect(x:0.0, y:0.0, width:30.0, height:30.0))
+//                markerView.layer.cornerRadius = 30.0
+//                markerView.backgroundColor = .red
+//                markerView.addSubview(label)
+//                marker.iconView = markerView
+//
+//                marker.position.latitude = lat!
+//                marker.position.longitude = lon!
+//                marker.title = TaskCollection.shared.tasks[i].name
+//                marker.map = self.mapView
+//            }
+//        }
+//    }
     
 }
 
