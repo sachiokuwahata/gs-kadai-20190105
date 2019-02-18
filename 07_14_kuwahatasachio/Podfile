@@ -12,6 +12,6 @@ target '07_14_kuwahatasachio' do
   pod 'Firebase/Auth'
   pod 'SDWebImage/WebP'
   pod 'FirebaseDatabase'
-
+  pod 'FBSDKLoginKit'
 
 end

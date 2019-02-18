@@ -14,6 +14,8 @@
 		1C396E1E21F5CB77009E91F0 /* DeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C396E1D21F5CB77009E91F0 /* DeleteViewController.swift */; };
 		1C409CC221F59AFD0029CBD0 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C409CC121F59AFD0029CBD0 /* RecordViewController.swift */; };
 		1C409CC421F5ACFD0029CBD0 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C409CC321F5ACFD0029CBD0 /* EditViewController.swift */; };
+		1C56103D22167A38007DD4BC /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C56103C22167A38007DD4BC /* LogoutViewController.swift */; };
+		1C601D5C22131BFE00454C1E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C601D5B22131BFE00454C1E /* User.swift */; };
 		1C6B4DAC21F97BF300AB4FEA /* TotalingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B4DAB21F97BF300AB4FEA /* TotalingViewController.swift */; };
 		1C6B4DAE21F9B77000AB4FEA /* Toatal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B4DAD21F9B77000AB4FEA /* Toatal.swift */; };
 		1C7CD10A21F7206A00B28AF2 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7CD10921F7206A00B28AF2 /* InputViewController.swift */; };
@@ -40,6 +42,8 @@
 		1C396E1D21F5CB77009E91F0 /* DeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteViewController.swift; sourceTree = "<group>"; };
 		1C409CC121F59AFD0029CBD0 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		1C409CC321F5ACFD0029CBD0 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		1C56103C22167A38007DD4BC /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
+		1C601D5B22131BFE00454C1E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1C6B4DAB21F97BF300AB4FEA /* TotalingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalingViewController.swift; sourceTree = "<group>"; };
 		1C6B4DAD21F9B77000AB4FEA /* Toatal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toatal.swift; sourceTree = "<group>"; };
 		1C7CD10921F7206A00B28AF2 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 				1C8B6F2821F5835C003CA72B /* Post.swift */,
 				1C8B6F2E21F586A0003CA72B /* TableButton.swift */,
 				1C409CC121F59AFD0029CBD0 /* RecordViewController.swift */,
+				1C601D5B22131BFE00454C1E /* User.swift */,
 				1C396E1D21F5CB77009E91F0 /* DeleteViewController.swift */,
 				1C6B4DAD21F9B77000AB4FEA /* Toatal.swift */,
 			);
@@ -133,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				1C8B6F2221F579E1003CA72B /* FeedViewController.swift */,
+				1C56103C22167A38007DD4BC /* LogoutViewController.swift */,
 				1C2093D221FB0F41007D1B15 /* TabBarController.swift */,
 				1C8B6F1021F5756D003CA72B /* ViewController.swift */,
 				1C1FB04C21F861A700F92866 /* InputMenuViewController.swift */,
@@ -265,7 +271,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-07_14_kuwahatasachio/Pods-07_14_kuwahatasachio-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
@@ -280,7 +289,10 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
@@ -343,6 +355,8 @@
 				1C8B6F2921F5835C003CA72B /* Post.swift in Sources */,
 				1C409CC421F5ACFD0029CBD0 /* EditViewController.swift in Sources */,
 				1C396E1E21F5CB77009E91F0 /* DeleteViewController.swift in Sources */,
+				1C56103D22167A38007DD4BC /* LogoutViewController.swift in Sources */,
+				1C601D5C22131BFE00454C1E /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,8 @@ import Firebase
 import SDWebImage
 
 class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewDataSource{
-
+    
+    var displayName = String()
     var userName = String()
     var posts = [Post]()
     var posst = Post()
@@ -44,7 +45,7 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
         weightTextLabel.text = posts[indexPath.row].weight
         numberTextLabel.text = posts[indexPath.row].number
         dateTextLabel.text = posts[indexPath.row].date
-        nameTextLabel.text = self.userName
+        nameTextLabel.text = self.displayName
         // URLへ変換
         let imageurl = URL(string: self.posts[indexPath.row].imageData as String)!
         // imageDataをimageViewへ設定
@@ -104,14 +105,13 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
     func fetchPost() {
         
         self.posts = [Post]()
-        let ref = Database.database().reference().child("postdata").child("\(String(describing: self.userName))")
+
+        let ref = Database.database().reference().child("postdata").child("\(self.userName)")
+
         
         ref.observeSingleEvent(of: .value) { (snap,error) in
             
             let postsnap = snap.value as? [String:NSDictionary]
-//            print("postsnap：\(postsnap)")
-//            print("postsnap?.keys：\(postsnap?.keys)")
-            
             if postsnap == nil {
                 return
             }
@@ -139,8 +139,23 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.userName = UserDefaults.standard.object(forKey: "userName") as! String
+
+// Userdefault処理
+//        self.userName = UserDefaults.standard.object(forKey: "userName") as! String
+
+// Facebook処理
+        if let user = User.shared.firebaseAuth.currentUser?.uid {
+            self.userName = user
+        }
+
+// Userdefault処理
+//        self.displayName = UserDefaults.standard.object(forKey: "userName") as! String
+
+// Facebook処理
+        if let dName = User.shared.firebaseAuth.currentUser?.displayName {
+            self.displayName = dName
+        }
+
         
         fetchPost()
         tableview.reloadData()
@@ -156,15 +171,13 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func LogoutButton(_ sender: Any) {
+        
+        let storyboardMain = UIStoryboard(name: "Main", bundle: nil)
+        let LogoutVC = storyboardMain.instantiateViewController(withIdentifier: "LogoutVC")
+        self.present(LogoutVC, animated: true, completion: nil)
+        
     }
-    */
+    
 
 }

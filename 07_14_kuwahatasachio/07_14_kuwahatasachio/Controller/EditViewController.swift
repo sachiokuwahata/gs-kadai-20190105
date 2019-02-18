@@ -70,7 +70,12 @@ class EditViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.userName = UserDefaults.standard.object(forKey: "userName") as! String
+
+        if let user = User.shared.firebaseAuth.currentUser?.uid {
+            self.userName = user
+        }
+
+        
     }
 
     
