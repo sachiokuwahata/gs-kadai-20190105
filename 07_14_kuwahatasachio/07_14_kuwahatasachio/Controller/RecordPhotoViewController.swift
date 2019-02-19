@@ -46,7 +46,6 @@ class RecordPhotoViewController: UIViewController ,UIImagePickerControllerDelega
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//        if let pickedimage = info[.originalImage] as? UIImage {
 
         if let pickedimage = info[.editedImage] as? UIImage {
             

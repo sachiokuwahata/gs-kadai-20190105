@@ -1,6 +1,0 @@
-framework module Pods_07_14_kuwahatasachio {
-  umbrella header "Pods-07_14_kuwahatasachio-umbrella.h"
-
-  export *
-  module * { export * }
-}
