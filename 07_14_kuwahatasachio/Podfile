@@ -13,5 +13,6 @@ target '07_14_kuwahatasachio' do
   pod 'SDWebImage/WebP'
   pod 'FirebaseDatabase'
   pod 'FBSDKLoginKit'
+  pod 'SVProgressHUD'
 
 end

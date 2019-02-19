@@ -10,10 +10,12 @@ import UIKit
 import Firebase
 import FBSDKCoreKit
 import FBSDKLoginKit
+import SVProgressHUD
 
 class ViewController: UIViewController ,FBSDKLoginButtonDelegate, UserDelegate{
-
+    
     func loginTrans(error: Error?) {
+        SVProgressHUD.dismiss()
         performSegue(withIdentifier: "next", sender: nil)
     }
     
@@ -27,6 +29,7 @@ class ViewController: UIViewController ,FBSDKLoginButtonDelegate, UserDelegate{
             return
         }
         // ログイン時の処理
+        SVProgressHUD.show()
         User.shared.fblogin()
     }
     // FBButtonでのLogout完了後に実行
@@ -53,9 +56,10 @@ class ViewController: UIViewController ,FBSDKLoginButtonDelegate, UserDelegate{
         self.fbLoginBtn.readPermissions = ["public_profile", "email"]
         self.fbLoginBtn.center = self.view.center
         self.view.addSubview(self.fbLoginBtn)
+
+        SVProgressHUD.show()
         
         User.shared.delegate = self
-        // 本来はココを表示
         User.shared.fblogin()
     }
     

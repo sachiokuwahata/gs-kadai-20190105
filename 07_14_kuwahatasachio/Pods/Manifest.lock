@@ -149,6 +149,7 @@ PODS:
   - SDWebImage/WebP (4.4.3):
     - libwebp (~> 0.5)
     - SDWebImage/Core
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - FBSDKLoginKit
@@ -158,6 +159,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - FirebaseDatabase
   - SDWebImage/WebP
+  - SVProgressHUD
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -184,6 +186,7 @@ SPEC REPOS:
     - nanopb
     - Protobuf
     - SDWebImage
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -209,7 +212,8 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 19da905824a845523ea2895558ac964d077b048e
+PODFILE CHECKSUM: 4e25063b3ad04cfea31bfa7a7882e614ec3d12e5
 
 COCOAPODS: 1.5.3

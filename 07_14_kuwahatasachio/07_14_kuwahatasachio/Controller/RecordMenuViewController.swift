@@ -21,8 +21,6 @@ class RecordMenuViewController: UIViewController ,UITableViewDelegate ,UITableVi
     var numberText = String()
     var menuText = String()
     var dateText = String()
-    
-//    let Input = InputViewController()
     var userName = String()
     var image = UIImage()
     
