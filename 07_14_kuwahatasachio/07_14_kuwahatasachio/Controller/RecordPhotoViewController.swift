@@ -11,6 +11,10 @@ import Photos
 
 class RecordPhotoViewController: UIViewController ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    
+    @IBOutlet weak var todayDate: UILabel!
+    var Today = String()
+    
     @IBAction func photo(_ sender: Any) {
         let sourceType:UIImagePickerController.SourceType = UIImagePickerController.SourceType.camera
         // カメラが利用可能かチェック
@@ -53,6 +57,8 @@ class RecordPhotoViewController: UIViewController ,UIImagePickerControllerDelega
             let menuVC = self.storyboard?.instantiateViewController(withIdentifier: "menuVC") as! RecordMenuViewController
             menuVC.image = pickedimage
 
+            menuVC.Today = self.Today
+            
             picker.dismiss(animated: true, completion: nil)
             self.navigationController?.pushViewController(menuVC, animated: true)
 
@@ -67,6 +73,8 @@ class RecordPhotoViewController: UIViewController ,UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        todayDate.text = Today
+        
         PHPhotoLibrary.requestAuthorization { (status) in
             switch(status){
             case .authorized:break
@@ -82,15 +90,5 @@ class RecordPhotoViewController: UIViewController ,UIImagePickerControllerDelega
     }
     
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

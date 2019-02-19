@@ -16,6 +16,7 @@ class RecordViewController: UIViewController {
     func dataSet(date: String,weight: String,number: String,menu: String,keys: String,userName:String, imageData:NSData){
 
         let rootref = Database.database().reference(fromURL: "https://muscleshow-b3569.firebaseio.com/").child("postdata").child("\(userName)")
+        
 
         let storage = Storage.storage().reference(forURL: "gs://muscleshow-b3569.appspot.com/")
         
@@ -71,6 +72,30 @@ class RecordViewController: UIViewController {
         }
         
     }
+    
+    func imageSet(date: String, userName:String, imageData:NSData){
+
+        let rootref = Database.database().reference(fromURL: "https://muscleshow-b3569.firebaseio.com/").child("postdata").child("\(userName)").child("imageData")
+        let storage = Storage.storage().reference(forURL: "gs://muscleshow-b3569.appspot.com/")
+        let key = rootref.childByAutoId().key
+        let imageRef = storage.child("\(userName)").child("\(key).jpg")
+        
+        let uploadTask = imageRef.putData(imageData as Data, metadata: nil) { (metadata, error) in
+            if error != nil {
+                return
+            }
+            imageRef.downloadURL(completion: { (url, error) in
+                let feed = ["date":date, "imageData": url?.absoluteString]
+                let postFeed = ["\(key)":feed]
+                
+                rootref.updateChildValues(postFeed)
+            })
+        }
+        uploadTask.resume()
+        self.dismiss(animated: true, completion: nil)
+
+    }
+    
     
     
     override func viewDidLoad() {

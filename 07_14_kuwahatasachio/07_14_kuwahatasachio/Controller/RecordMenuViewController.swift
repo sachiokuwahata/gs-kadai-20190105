@@ -13,8 +13,11 @@ class RecordMenuViewController: UIViewController ,UITableViewDelegate ,UITableVi
     var posts = [Post]()
     var posst = Post()
     var data:NSData = NSData()
+    var Today = String()
     
     @IBOutlet weak var tableview: UITableView!
+    
+    @IBOutlet weak var TodayDate: UILabel!
     
     
     var weightText = String()
@@ -31,7 +34,6 @@ class RecordMenuViewController: UIViewController ,UITableViewDelegate ,UITableVi
     @IBOutlet weak var menuTextField: UITextField!
     @IBOutlet weak var numberTextField: UITextField!
     @IBOutlet weak var weightTextField: UITextField!
-    @IBOutlet weak var dateTextField: UITextField!
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if(menuTextField.isFirstResponder){
@@ -40,32 +42,13 @@ class RecordMenuViewController: UIViewController ,UITableViewDelegate ,UITableVi
             numberTextField.resignFirstResponder()
         } else if(weightTextField.isFirstResponder){
             weightTextField.resignFirstResponder()
-        } else if(dateTextField.isFirstResponder){
-            dateTextField.resignFirstResponder()
         }
     }
     
     @IBAction func saveButton(_ sender: Any) {
         
-//        guard let menu = menuTextField.text else{ return }
-//        guard let number = numberTextField.text else{ return }
-//        guard let weight = weightTextField.text else{ return }
-//        guard let date = dateTextField.text else{ return }
-//        let userName = self.userName
-//        let keys = "damyy"
-//
-//        var data:NSData = NSData()
-//        if let image = pickedImageView.image {
-//            data = image.jpegData(compressionQuality: 0.01)! as NSData
-//        }
-
         let userName = self.userName
         let keys = "damyy"
-        
-//        var data:NSData = NSData()
-//        if let image = pickedImageView.image {
-//            data = image.jpegData(compressionQuality: 0.01)! as NSData
-//        }
         
         for post in posts {
         
@@ -75,8 +58,9 @@ class RecordMenuViewController: UIViewController ,UITableViewDelegate ,UITableVi
             let date = post.date
         
             RecordViewController.shared.dataSet(date: date,weight: weight,number: number,menu: menu,keys: keys,userName:userName,imageData:data)
-
         }
+        
+        RecordViewController.shared.imageSet(date: self.Today, userName:self.userName, imageData:data)
         
         let feedVC = self.storyboard?.instantiateViewController(withIdentifier: "feedVC") as! FeedViewController
         self.navigationController?.popViewController(animated: true)
@@ -89,7 +73,7 @@ class RecordMenuViewController: UIViewController ,UITableViewDelegate ,UITableVi
     @IBAction func addDataButton(_ sender: Any) {
         self.posst = Post()
         
-        self.posst.date = self.dateText
+        self.posst.date = self.Today
         self.posst.weight = self.weightText
         self.posst.number = self.numberText
         self.posst.menu = self.menuText
@@ -99,12 +83,10 @@ class RecordMenuViewController: UIViewController ,UITableViewDelegate ,UITableVi
         UserDefaults.standard.set("0", forKey: "selectWeight")
         UserDefaults.standard.set("0", forKey: "selectNumber")
         UserDefaults.standard.set("---------", forKey: "selectMenu")
-        UserDefaults.standard.set("yyyy年mm月dd日", forKey: "selectDate")
         
         menuTextField.text = UserDefaults.standard.object(forKey: "selectMenu") as! String
         weightTextField.text = UserDefaults.standard.object(forKey: "selectWeight") as! String
         numberTextField.text = UserDefaults.standard.object(forKey: "selectNumber") as! String
-        dateTextField.text = UserDefaults.standard.object(forKey: "selectDate") as! String
         
         print(self.posts)
         self.tableview.reloadData()
@@ -128,7 +110,6 @@ class RecordMenuViewController: UIViewController ,UITableViewDelegate ,UITableVi
         menuTextField.text = menuText
         weightTextField.text = weightText
         numberTextField.text = numberText
-        dateTextField.text = dateText
     }
     
     override func viewDidLoad() {
@@ -138,6 +119,8 @@ class RecordMenuViewController: UIViewController ,UITableViewDelegate ,UITableVi
         tableview.dataSource = self
         pickedImageView.image = image
 
+        TodayDate.text = Today
+        
         if let image = pickedImageView.image {
             self.data = image.jpegData(compressionQuality: 0.01)! as NSData
         }
@@ -175,12 +158,6 @@ class RecordMenuViewController: UIViewController ,UITableViewDelegate ,UITableVi
     @IBAction func menuButton(_ sender: Any) {
         let inputMenu = storyboard!.instantiateViewController(withIdentifier: "inputMenu")
         self.present(inputMenu,animated: true, completion: nil)
-    }
-    
-    
-    @IBAction func dateButton(_ sender: Any) {
-        let inputDate = storyboard!.instantiateViewController(withIdentifier: "inputDate")
-        self.present(inputDate,animated: true, completion: nil)
     }
     
 }
