@@ -140,16 +140,11 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-// Userdefault処理
-//        self.userName = UserDefaults.standard.object(forKey: "userName") as! String
 
 // Facebook処理
         if let user = User.shared.firebaseAuth.currentUser?.uid {
             self.userName = user
         }
-
-// Userdefault処理
-//        self.displayName = UserDefaults.standard.object(forKey: "userName") as! String
 
 // Facebook処理
         if let dName = User.shared.firebaseAuth.currentUser?.displayName {
