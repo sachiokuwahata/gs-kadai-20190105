@@ -120,8 +120,6 @@ class TotalingViewController: UIViewController ,UITableViewDataSource,UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        self.userName = UserDefaults.standard.object(forKey: "userName") as! String
         
 // Facebook処理
         if let user = User.shared.firebaseAuth.currentUser?.uid {

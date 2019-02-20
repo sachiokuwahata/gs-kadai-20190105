@@ -16,74 +16,45 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
     var userName = String()
     var posts = [Post]()
     var posst = Post()
-    
+    var menuDateKeys = [String]()
+    var imageKyes: [String: String] = [:]
+        
     @IBOutlet weak var tableview: UITableView!
+
     
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.posts.count
-
+        return self.menuDateKeys.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 450
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableview.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        // cell内のItemを紐づけ
         let imageView = cell.viewWithTag(1) as! UIImageView
-        let menuTextLabel = cell.viewWithTag(2) as! UILabel
-        let weightTextLabel = cell.viewWithTag(3) as! UILabel
-        let numberTextLabel = cell.viewWithTag(4) as! UILabel
         let dateTextLabel = cell.viewWithTag(5) as! UILabel
         let nameTextLabel = cell.viewWithTag(6) as! UILabel
-        
-        menuTextLabel.text = posts[indexPath.row].menu
-        weightTextLabel.text = posts[indexPath.row].weight
-        numberTextLabel.text = posts[indexPath.row].number
-        dateTextLabel.text = posts[indexPath.row].date
+
+        dateTextLabel.text = self.menuDateKeys[indexPath.row]
         nameTextLabel.text = self.displayName
+        
         // URLへ変換
-        let imageurl = URL(string: self.posts[indexPath.row].imageData as String)!
-        // imageDataをimageViewへ設定
+        let imageurl = URL(string: self.imageKyes[self.menuDateKeys[indexPath.row]] as! String)
         imageView.sd_setImage(with: imageurl, completed: nil)
         imageView.layer.cornerRadius = 8.0
         imageView.clipsToBounds = true
-        
+
         var imageData:NSData = NSData()
         if let image = imageView.image {
-            imageData = image.jpegData(compressionQuality: 0.01)! as NSData
-        }
-
-        
-        // 編集用のButton作成
-        let editButton = TableButton(frame: CGRect(x:300,y:20,width:40,height:10))
-        editButton.setTitleColor(UIColor.gray, for: .normal)
-        editButton.setTitle(">>>", for: .normal)
-        editButton.titleLabel?.font =  UIFont.systemFont(ofSize: 15)
-        
-        // 作成したプロパティ
-        editButton.indexpath = indexPath.row
-        editButton.menu = posts[indexPath.row].menu
-        editButton.date = posts[indexPath.row].date
-        editButton.number = posts[indexPath.row].number
-        editButton.weight = posts[indexPath.row].weight
-        editButton.key = posts[indexPath.row].key
-        //editButton.imageData = posts[indexPath.row].imageData
-        editButton.imageData = imageData
-        
-        
-        // editの実行
-        editButton.addTarget(self, action: #selector(self.edit), for: UIControl.Event.touchUpInside)
-        cell.addSubview(editButton)
-        
-        
+                    imageData = image.jpegData(compressionQuality: 0.01)! as NSData
+                }
         return cell
     }
-
+    
+    
     @objc func edit(_ sender:TableButton){
         print(sender.indexpath)
         
@@ -105,12 +76,10 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
     func fetchPost() {
         
         self.posts = [Post]()
-
         let ref = Database.database().reference().child("postdata").child("\(self.userName)")
-
+        let refImage = Database.database().reference().child("imageData").child("\(self.userName)")
         
         ref.observeSingleEvent(of: .value) { (snap,error) in
-            
             let postsnap = snap.value as? [String:NSDictionary]
             if postsnap == nil {
                 return
@@ -132,34 +101,52 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
                 self.posts.append(self.posst)
                 print("Date: \(self.posst.date)")
                 print("Menu: \(self.posst.menu)")
-                print("ImageData: \(self.posst.imageData)")
             }
-            self.tableview.reloadData()
+            
+            refImage.observeSingleEvent(of: .value) { (snap,error) in
+                let postsnap = snap.value as? [String:NSDictionary]
+                if postsnap == nil {
+                    return
+                }
+                
+                for (_,post) in postsnap! {
+                    if let date = post["date"] as! String?, let imageData = post["imageData"] as! String?{
+                        self.imageKyes[date] = imageData
+                    }
+                    print(self.imageKyes)
+                }
+                self.Calculation()
+                self.tableview.reloadData()
+            }
         }
-        
     }
 
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
 
-// Facebook処理
+        // Facebook処理
         if let user = User.shared.firebaseAuth.currentUser?.uid {
             self.userName = user
         }
 
-// Facebook処理
+        // Facebook処理
         if let dName = User.shared.firebaseAuth.currentUser?.displayName {
             self.displayName = dName
         }
-
-        
         fetchPost()
         tableview.reloadData()
-        
     }
 
+    
+    func Calculation() {
+        let DicMenu = Dictionary(grouping: self.posts, by: { $0.date })
+        print("Gather: \(DicMenu)")
+        self.menuDateKeys = [String](DicMenu.keys)
+        if menuDateKeys == nil { return }
+        print(self.menuDateKeys)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
