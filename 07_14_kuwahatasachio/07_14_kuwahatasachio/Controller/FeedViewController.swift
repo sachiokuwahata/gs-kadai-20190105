@@ -130,6 +130,9 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
                     
                 }
                 self.posts.append(self.posst)
+                print("Date: \(self.posst.date)")
+                print("Menu: \(self.posst.menu)")
+                print("ImageData: \(self.posst.imageData)")
             }
             self.tableview.reloadData()
         }
