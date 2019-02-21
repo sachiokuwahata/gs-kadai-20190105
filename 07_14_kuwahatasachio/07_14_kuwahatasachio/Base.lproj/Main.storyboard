@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FacebookLoginをして下さい。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bt9-ub-uqF">
-                                <rect key="frame" x="35.666666666666657" y="253" width="342.66666666666674" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FacebookでLogin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bt9-ub-uqF">
+                                <rect key="frame" x="111.66666666666669" y="253" width="191" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -419,59 +419,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aIr-Di-Iwc">
-                                <rect key="frame" x="157" y="388" width="100" height="120.33333333333331"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLg-2c-W8i">
+                                <rect key="frame" x="100" y="249" width="214" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="TrT-bp-eKe">
+                                <rect key="frame" x="82" y="303" width="250" height="130.33333333333337"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0u-ha-AGo">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                        <state key="normal" image="icon_camera"/>
-                                        <connections>
-                                            <action selector="photo:" destination="aeM-Nc-9CB" eventType="touchUpInside" id="FOJ-45-42D"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjQ-kh-fqG">
-                                        <rect key="frame" x="20.333333333333339" y="100" width="59.666666666666657" height="20.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tqi-zG-ZXa">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="130.33333333333334"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yr7-Sj-UUq">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                <state key="normal" image="icon_album"/>
+                                                <connections>
+                                                    <action selector="Album:" destination="aeM-Nc-9CB" eventType="touchUpInside" id="0RR-S9-HBA"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUd-BA-n4I">
+                                                <rect key="frame" x="25.666666666666671" y="110" width="49" height="20.333333333333343"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="aIr-Di-Iwc">
+                                        <rect key="frame" x="150" y="0.0" width="100" height="130.33333333333334"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0u-ha-AGo">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                <state key="normal" image="icon_camera"/>
+                                                <connections>
+                                                    <action selector="photo:" destination="aeM-Nc-9CB" eventType="touchUpInside" id="FOJ-45-42D"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjQ-kh-fqG">
+                                                <rect key="frame" x="20.333333333333339" y="110" width="59.666666666666657" height="20.333333333333343"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="tqi-zG-ZXa">
-                                <rect key="frame" x="157" y="213.33333333333331" width="100" height="149.33333333333331"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yr7-Sj-UUq">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                        <state key="normal" image="icon_album"/>
-                                        <connections>
-                                            <action selector="Album:" destination="aeM-Nc-9CB" eventType="touchUpInside" id="0RR-S9-HBA"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUd-BA-n4I">
-                                        <rect key="frame" x="25.666666666666657" y="128.99999999999997" width="49" height="20.333333333333343"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLg-2c-W8i">
-                                <rect key="frame" x="100" y="113.99999999999999" width="214" height="32.333333333333329"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photoを追加して下さい。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ie-CG-hEA">
+                                <rect key="frame" x="89.666666666666671" y="214" width="234.66666666666663" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="LLg-2c-W8i" firstAttribute="top" secondItem="FGU-VW-OzN" secondAttribute="top" constant="50" id="4KA-oG-Tnz"/>
                             <constraint firstItem="LLg-2c-W8i" firstAttribute="leading" secondItem="FGU-VW-OzN" secondAttribute="leading" constant="100" id="75O-2C-ECb"/>
-                            <constraint firstItem="aIr-Di-Iwc" firstAttribute="centerY" secondItem="bmn-0o-9QC" secondAttribute="centerY" constant="80" id="Dkt-8O-p5c"/>
-                            <constraint firstItem="tqi-zG-ZXa" firstAttribute="centerY" secondItem="bmn-0o-9QC" secondAttribute="centerY" constant="-80" id="FSD-oq-iTM"/>
-                            <constraint firstItem="tqi-zG-ZXa" firstAttribute="centerX" secondItem="bmn-0o-9QC" secondAttribute="centerX" id="G0W-UW-OqV"/>
                             <constraint firstItem="LLg-2c-W8i" firstAttribute="centerX" secondItem="bmn-0o-9QC" secondAttribute="centerX" id="SfJ-7f-iYs"/>
+                            <constraint firstItem="TrT-bp-eKe" firstAttribute="top" secondItem="LLg-2c-W8i" secondAttribute="bottom" constant="30" id="WIr-rg-iF2"/>
                             <constraint firstItem="FGU-VW-OzN" firstAttribute="trailing" secondItem="LLg-2c-W8i" secondAttribute="trailing" constant="100" id="Wsc-Lb-kS5"/>
-                            <constraint firstItem="aIr-Di-Iwc" firstAttribute="centerX" secondItem="bmn-0o-9QC" secondAttribute="centerX" id="kwi-wj-oHH"/>
+                            <constraint firstItem="TrT-bp-eKe" firstAttribute="centerX" secondItem="bmn-0o-9QC" secondAttribute="centerX" id="bOC-9V-OWh"/>
+                            <constraint firstItem="0ie-CG-hEA" firstAttribute="top" secondItem="FGU-VW-OzN" secondAttribute="top" constant="150" id="kvM-Qa-hp3"/>
+                            <constraint firstItem="0ie-CG-hEA" firstAttribute="centerX" secondItem="bmn-0o-9QC" secondAttribute="centerX" id="lBz-8z-vfn"/>
+                            <constraint firstItem="TrT-bp-eKe" firstAttribute="centerY" secondItem="bmn-0o-9QC" secondAttribute="centerY" id="loX-2H-Wtb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FGU-VW-OzN"/>
                     </view>
