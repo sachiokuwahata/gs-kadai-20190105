@@ -54,14 +54,24 @@ class RecordPhotoViewController: UIViewController ,UIImagePickerControllerDelega
 
         if let pickedimage = info[.editedImage] as? UIImage {
             
-            let menuVC = self.storyboard?.instantiateViewController(withIdentifier: "menuVC") as! RecordMenuViewController
-            menuVC.image = pickedimage
+//            let menuVC = self.storyboard?.instantiateViewController(withIdentifier: "menuVC") as! RecordMenuViewController
+//            menuVC.image = pickedimage
+//
+//            menuVC.Today = self.Today
+//
+//            picker.dismiss(animated: true, completion: nil)
+//            self.navigationController?.pushViewController(menuVC, animated: true)
 
-            menuVC.Today = self.Today
+            let TrainingVC = self.storyboard?.instantiateViewController(withIdentifier: "TrainingVC") as! RecordTrainingViewController
+            TrainingVC.image = pickedimage
+
+            TrainingVC.Today = self.Today
             
             picker.dismiss(animated: true, completion: nil)
-            self.navigationController?.pushViewController(menuVC, animated: true)
+            self.navigationController?.pushViewController(TrainingVC, animated: true)
 
+            
+            
         }
     }
     
