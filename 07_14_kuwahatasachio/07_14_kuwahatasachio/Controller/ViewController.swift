@@ -36,16 +36,7 @@ class ViewController: UIViewController ,FBSDKLoginButtonDelegate, UserDelegate{
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
-    }
-    
-    @IBOutlet weak var userNameTextField: UITextField!
-    
-    @IBAction func nextButton(_ sender: Any) {
-        if let userName = userNameTextField.text {
-            UserDefaults.standard.set(userName, forKey: "userName")
-        }
-        self.performSegue(withIdentifier: "next", sender: nil)
-    }
+    }    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,15 +49,13 @@ class ViewController: UIViewController ,FBSDKLoginButtonDelegate, UserDelegate{
         // 本来はココを表示
         User.shared.fblogin()
     }
-    
-    @IBAction func checkButton(_ sender: Any) {
-        let tokennn = FBSDKAccessToken.current()
-        print("User: \(User.shared.firebaseAuth.currentUser)")
-        print("token: \(tokennn)")
-                
-        // 本来はココ不要
-        User.shared.fblogin()
-    }
+
+// FacebookLoginとFirebaseLoginの違いを理解するCheck
+//    @IBAction func checkButton(_ sender: Any) {
+//        let tokennn = FBSDKAccessToken.current()
+//        print("User: \(User.shared.firebaseAuth.currentUser)")
+//        print("token: \(tokennn)")
+//    }
 
 }
 

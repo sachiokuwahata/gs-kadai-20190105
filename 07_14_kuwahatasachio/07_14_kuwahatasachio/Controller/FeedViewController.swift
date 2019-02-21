@@ -54,6 +54,11 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let dateData = self.menuDateKeys[indexPath.row]
+        print("DAte: \(dateData)")
+    }
+    
     
     @objc func edit(_ sender:TableButton){
         print(sender.indexpath)
@@ -144,7 +149,7 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
         print("Gather: \(DicMenu)")
         self.menuDateKeys = [String](DicMenu.keys)
         if menuDateKeys == nil { return }
-        print(self.menuDateKeys)
+        print("MenuDate: \(self.menuDateKeys)")
     }
     
     
