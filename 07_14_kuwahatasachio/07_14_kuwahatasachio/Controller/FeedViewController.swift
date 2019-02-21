@@ -16,6 +16,7 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
     var userName = String()
     var posts = [Post]()
     var posst = Post()
+    
     var menuDateKeys = [String]()
     var imageKyes: [String: String] = [:]
         
@@ -27,7 +28,7 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 450
+        return 400
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,7 +57,13 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let dateData = self.menuDateKeys[indexPath.row]
-        print("DAte: \(dateData)")
+        let postFilter = self.posts.filter({$0.date == dateData})
+
+        PostController.shared.selectedPost = postFilter
+        
+        print("SelectedPost: \(PostController.shared.selectedPost)")
+        let didSelectMenuVc = self.storyboard?.instantiateViewController(withIdentifier: "didSelectMenuVc") as! didSelectMenuVcViewController
+        self.navigationController?.pushViewController(didSelectMenuVc, animated: true)
     }
     
     
@@ -104,10 +111,7 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
                     
                 }
                 self.posts.append(self.posst)
-                print("Date: \(self.posst.date)")
-                print("Menu: \(self.posst.menu)")
             }
-            
             refImage.observeSingleEvent(of: .value) { (snap,error) in
                 let postsnap = snap.value as? [String:NSDictionary]
                 if postsnap == nil {
@@ -118,7 +122,6 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
                     if let date = post["date"] as! String?, let imageData = post["imageData"] as! String?{
                         self.imageKyes[date] = imageData
                     }
-                    print(self.imageKyes)
                 }
                 self.Calculation()
                 self.tableview.reloadData()
@@ -146,10 +149,10 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
     
     func Calculation() {
         let DicMenu = Dictionary(grouping: self.posts, by: { $0.date })
-        print("Gather: \(DicMenu)")
         self.menuDateKeys = [String](DicMenu.keys)
         if menuDateKeys == nil { return }
         print("MenuDate: \(self.menuDateKeys)")
+        
     }
     
     
@@ -168,6 +171,5 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
         self.present(LogoutVC, animated: true, completion: nil)
         
     }
-    
 
 }

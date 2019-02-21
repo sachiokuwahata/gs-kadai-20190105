@@ -12,6 +12,9 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 class ViewController: UIViewController ,FBSDKLoginButtonDelegate, UserDelegate{
+    func loginLoad() {
+        self.showIndicator()
+    }
 
     func loginTrans(error: Error?) {
         performSegue(withIdentifier: "next", sender: nil)
@@ -46,7 +49,6 @@ class ViewController: UIViewController ,FBSDKLoginButtonDelegate, UserDelegate{
         self.view.addSubview(self.fbLoginBtn)
         
         User.shared.delegate = self
-        // 本来はココを表示
         User.shared.fblogin()
     }
 

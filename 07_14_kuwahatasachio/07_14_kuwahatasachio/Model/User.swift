@@ -13,6 +13,8 @@ import FBSDKLoginKit
 
 protocol UserDelegate: class {
     func loginTrans(error: Error?)
+    func loginLoad()
+
 }
 
 class User {
@@ -33,6 +35,7 @@ class User {
                     // ...
                     return
                 }
+                self.delegate?.loginLoad()
                 // ログイン時の処理
                 print("FirebaseUser: \(User.shared.firebaseAuth.currentUser)")
                 print("FBtoken: \(token)")

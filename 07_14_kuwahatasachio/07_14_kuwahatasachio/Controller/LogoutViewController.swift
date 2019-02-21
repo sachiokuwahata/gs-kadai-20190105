@@ -12,6 +12,10 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 class LogoutViewController: UIViewController ,FBSDKLoginButtonDelegate , UserDelegate{
+    func loginLoad() {
+        self.showIndicator()
+    }
+    
 
     func loginTrans(error: Error?) {
         self.dismiss(animated: true, completion: nil)
