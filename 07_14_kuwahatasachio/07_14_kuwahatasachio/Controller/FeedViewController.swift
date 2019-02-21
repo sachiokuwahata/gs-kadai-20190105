@@ -79,7 +79,7 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
         editVC.number = sender.number! // String()
         editVC.weight = sender.weight! // String()
         editVC.key = sender.key! // String()
-        editVC.imageData = sender.imageData! // NSData()
+//        editVC.imageData = sender.imageData! // NSData()
         
         self.navigationController?.pushViewController(editVC, animated: true)
         
@@ -101,15 +101,13 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
             for (_,post) in postsnap! {
                 PostController.shared.posst = Post()
                 
-                if let date = post["date"] as! String?, let weight = post["weight"] as! String?, let number = post["number"] as! String?, let menu = post["menu"]  as! String?,let key = post["key"] as! String?, let imageData = post["imageData"] as! String?{
+                if let date = post["date"] as! String?, let weight = post["weight"] as! String?, let number = post["number"] as! String?, let menu = post["menu"]  as! String?,let key = post["key"] as! String?{
                     
                     PostController.shared.posst.date = date
                     PostController.shared.posst.weight = weight
                     PostController.shared.posst.number = number
                     PostController.shared.posst.menu = menu
-                    PostController.shared.posst.key = key
-//                    PostController.shared.posst.imageData = imageData
-                    
+                    PostController.shared.posst.key = key                    
                 }
                 PostController.shared.posts.append(PostController.shared.posst)
             }
@@ -153,7 +151,6 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
         self.menuDateKeys = [String](DicMenu.keys)
         if menuDateKeys == nil { return }
         print("MenuDate: \(self.menuDateKeys)")
-        
     }
     
     

@@ -16,5 +16,5 @@ class TableButton: UIButton {
     var number:String?
     var weight:String?
     var key:String?
-    var imageData:NSData?
+//    var imageData:NSData?
 }

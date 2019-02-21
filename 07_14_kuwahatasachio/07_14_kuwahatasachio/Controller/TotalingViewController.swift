@@ -50,27 +50,25 @@ class TotalingViewController: UIViewController ,UITableViewDataSource,UITableVie
             var totalnumber: Int = 0
 
             let menuNumCount = Dic[menukey]?.count as! Int
-            print("menuNumCount: \(menuNumCount)")
             for i in 0..<menuNumCount{
-                print("menukey: \(menukey)")
-                print("Dic[menukey]: \(String(describing: Dic[menukey]?[i])) + / + \(i)")
-                print("Dic[menukey]number: \(String(describing: Dic[menukey]?[i].number))")
-                                
+//                print("menukey: \(menukey)")
+//                print("Dic[menukey]: \(String(describing: Dic[menukey]?[i])) + / + \(i)")
+//                print("Dic[menukey]number: \(String(describing: Dic[menukey]?[i].number))")
+                
                 totalnumber = totalnumber + Int((Dic[menukey]?[i].number)!)!
             }
 
             self.totaln.menu = menukey
             self.totaln.number = totalnumber
             self.totals.append(self.totaln)
-            print("self.totaln.menu: \(self.totaln.menu) + / +  \(self.totaln.number)")
+//            print("self.totaln.menu: \(self.totaln.menu) + / +  \(self.totaln.number)")
             self.tableview.reloadData()
         }
 
         
     }
     
-    func fetchMarkerup(completion:@escaping ()->Void) {
-//    func fetchPost() {
+    func fetchPost() {
         
         PostController.shared.posts = [Post]()
         PostController.shared.posst =  Post()
@@ -87,7 +85,7 @@ class TotalingViewController: UIViewController ,UITableViewDataSource,UITableVie
             for (_,post) in postsnap! {
                 PostController.shared.posst = Post()
                 
-                if let date = post["date"] as! String?, let weight = post["weight"] as! String?, let number = post["number"] as! String?, let menu = post["menu"]  as! String?,let key = post["key"] as! String?, let imageData = post["imageData"] as! String?{
+                if let date = post["date"] as! String?, let weight = post["weight"] as! String?, let number = post["number"] as! String?, let menu = post["menu"]  as! String?,let key = post["key"] as! String?{
                     
                     PostController.shared.posst.date = date
                     PostController.shared.posst.weight = weight
@@ -98,10 +96,8 @@ class TotalingViewController: UIViewController ,UITableViewDataSource,UITableVie
                 }
                 PostController.shared.posts.append(PostController.shared.posst)
             }
-            // 終了後に実行したい関数
-            completion()
-// self.prepareData()
-// self.tableview.reloadData()
+     self.prepareData()
+     self.tableview.reloadData()
         }
         
     }
@@ -109,15 +105,14 @@ class TotalingViewController: UIViewController ,UITableViewDataSource,UITableVie
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.fetchMarkerup(completion:prepareData)
-//        self.fetchPost()
+        self.fetchPost()
     }
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-// Facebook処理
+        // Facebook処理
         if let user = User.shared.firebaseAuth.currentUser?.uid {
             self.userName = user
         }

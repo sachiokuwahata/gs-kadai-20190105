@@ -25,7 +25,6 @@ class RecordMenuViewController: UIViewController ,UITableViewDelegate ,UITableVi
     var menuText = String()
     var dateText = String()
     
-//    let Input = InputViewController()
     var userName = String()
     var image = UIImage()
     
@@ -56,10 +55,8 @@ class RecordMenuViewController: UIViewController ,UITableViewDelegate ,UITableVi
             let number = post.number
             let weight = post.weight
             let date = post.date
-        RecordViewController.shared.dataSet(date: date,weight: weight,number: number,menu: menu,keys: keys,userName:userName
-            )
-
-//            RecordViewController.shared.dataSet(date: date,weight: weight,number: number,menu: menu,keys: keys,userName:userName,imageData:data)
+        
+            RecordViewController.shared.dataSet(date: date,weight: weight,number: number,menu: menu,keys: keys,userName:userName)
         }
         
         RecordViewController.shared.imageSet(date: self.Today, userName:self.userName, imageData:data)
@@ -67,8 +64,6 @@ class RecordMenuViewController: UIViewController ,UITableViewDelegate ,UITableVi
         let feedVC = self.storyboard?.instantiateViewController(withIdentifier: "feedVC") as! FeedViewController
         self.navigationController?.popViewController(animated: true)
         self.tabBarController!.selectedIndex = 2
-        
-
     }
 
     
@@ -92,7 +87,6 @@ class RecordMenuViewController: UIViewController ,UITableViewDelegate ,UITableVi
         
         print(self.posts)
         self.tableview.reloadData()
-        
     }
     
     
