@@ -43,11 +43,19 @@ class ViewController: UIViewController ,FBSDKLoginButtonDelegate, UserDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.fbLoginBtn.delegate = self
-        self.fbLoginBtn.readPermissions = ["public_profile", "email"]
-        self.fbLoginBtn.center = self.view.center
-        self.view.addSubview(self.fbLoginBtn)
         
+        self.showIndicator()
+        
+        if User.shared.firebaseAuth.currentUser?.uid == nil {
+            
+            self.hideIndicator()
+            
+            self.fbLoginBtn.delegate = self
+            self.fbLoginBtn.readPermissions = ["public_profile", "email"]
+            self.fbLoginBtn.center = self.view.center
+            self.view.addSubview(self.fbLoginBtn)
+        }
+
         User.shared.delegate = self
         User.shared.fblogin()
     }

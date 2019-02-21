@@ -9,13 +9,24 @@
 import UIKit
 
 extension UIViewController {
+    enum Tags: Int {
+        case indicator = 9999
+    }
+}
+
+extension UIViewController {
     
     func showIndicator(color: UIColor = .black) {
+
+        if self.view.viewWithTag(Tags.indicator.rawValue) != nil {
+            return
+        }
         
         let bounds = self.view.bounds
         let view = UIView(frame: bounds)
+        view.tag = Tags.indicator.rawValue
         view.backgroundColor = .gray
-        view.alpha = 0.3
+        view.alpha = 0.5
         
         let indicator = UIActivityIndicatorView(style: .whiteLarge)
         indicator.color = color
@@ -27,6 +38,10 @@ extension UIViewController {
     }
     
     func hideIndicator() {
+        
+        guard let view = self.view.viewWithTag(Tags.indicator.rawValue) else {
+            return
+        }
         view.removeFromSuperview()
     }
 

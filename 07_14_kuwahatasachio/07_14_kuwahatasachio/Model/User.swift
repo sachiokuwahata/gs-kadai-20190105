@@ -32,7 +32,6 @@ class User {
             let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
             User.shared.firebaseAuth.signInAndRetrieveData(with: credential) { (authResult, error) in
                 if error != nil {
-                    // ...
                     return
                 }
                 self.delegate?.loginLoad()
