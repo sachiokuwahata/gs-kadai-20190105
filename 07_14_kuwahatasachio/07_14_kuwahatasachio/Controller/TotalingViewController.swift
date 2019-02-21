@@ -11,8 +11,6 @@ import Firebase
 
 class TotalingViewController: UIViewController ,UITableViewDataSource,UITableViewDelegate{
     
-    var posts = [Post]()
-    var posst = Post()
     var userName = String()
 
     var totals = [Toatal]()
@@ -35,17 +33,9 @@ class TotalingViewController: UIViewController ,UITableViewDataSource,UITableVie
         
         return cell
     }
-
-    
-    
-    @IBAction func toatalButton(_ sender: Any) {
-        self.prepareData()
-        tableview.reloadData()
-    }
-    
     
     private func prepareData() {
-        let Dic = Dictionary(grouping: self.posts, by: { $0.menu })
+        let Dic = Dictionary(grouping: PostController.shared.posts, by: { $0.menu })
         print(Dic)
         let menukeys = [String](Dic.keys)
         if menukeys == nil { return }
@@ -61,14 +51,12 @@ class TotalingViewController: UIViewController ,UITableViewDataSource,UITableVie
 
             let menuNumCount = Dic[menukey]?.count as! Int
             print("menuNumCount: \(menuNumCount)")
-            //let menuNum = menuNumCount - 1
             for i in 0..<menuNumCount{
                 print("menukey: \(menukey)")
                 print("Dic[menukey]: \(String(describing: Dic[menukey]?[i])) + / + \(i)")
                 print("Dic[menukey]number: \(String(describing: Dic[menukey]?[i].number))")
                                 
                 totalnumber = totalnumber + Int((Dic[menukey]?[i].number)!)!
-                
             }
 
             self.totaln.menu = menukey
@@ -81,7 +69,8 @@ class TotalingViewController: UIViewController ,UITableViewDataSource,UITableVie
     
     func fetchPost() {
         
-        self.posts = [Post]()
+        PostController.shared.posts = [Post]()
+        PostController.shared.posst =  Post()
         let ref = Database.database().reference().child("postdata").child("\(String(describing: self.userName))")
         
         ref.observeSingleEvent(of: .value) { (snap,error) in
@@ -93,20 +82,22 @@ class TotalingViewController: UIViewController ,UITableViewDataSource,UITableVie
             }
             
             for (_,post) in postsnap! {
-                self.posst = Post()
+                PostController.shared.posst = Post()
                 
                 if let date = post["date"] as! String?, let weight = post["weight"] as! String?, let number = post["number"] as! String?, let menu = post["menu"]  as! String?,let key = post["key"] as! String?, let imageData = post["imageData"] as! String?{
                     
-                    self.posst.date = date
-                    self.posst.weight = weight
-                    self.posst.number = number
-                    self.posst.menu = menu
-                    self.posst.key = key
-                    self.posst.imageData = imageData
+                    PostController.shared.posst.date = date
+                    PostController.shared.posst.weight = weight
+                    PostController.shared.posst.number = number
+                    PostController.shared.posst.menu = menu
+                    PostController.shared.posst.key = key
+                    PostController.shared.posst.imageData = imageData
                     
                 }
-                self.posts.append(self.posst)
+                PostController.shared.posts.append(PostController.shared.posst)
             }
+            self.prepareData()
+            self.tableview.reloadData()
         }
         
     }

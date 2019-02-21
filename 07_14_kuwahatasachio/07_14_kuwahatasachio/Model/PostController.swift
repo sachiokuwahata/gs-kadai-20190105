@@ -11,6 +11,10 @@ import UIKit
 class PostController: NSObject {
     
     static var shared = PostController() 
+
     var selectedPost = [Post]()
+
+    var posts = [Post]()
+    var posst = Post()
     
 }

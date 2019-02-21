@@ -855,18 +855,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JhB-Es-KRl">
-                                <rect key="frame" x="130" y="635" width="154" height="42"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <state key="normal" title="更新">
-                                    <color key="titleColor" red="0.64530010010000005" green="0.64617796459999999" blue="0.65611119920000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="toatalButton:" destination="erG-cO-ihA" eventType="touchUpInside" id="5tf-EY-DWV"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SF7-Kg-Haz">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SF7-Kg-Haz">
                                 <rect key="frame" x="0.0" y="112.66666666666669" width="414" height="512.33333333333326"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -919,11 +908,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="meg-j2-1ZK" firstAttribute="bottom" secondItem="JhB-Es-KRl" secondAttribute="bottom" constant="10" id="OjF-Hp-07S"/>
                             <constraint firstItem="meg-j2-1ZK" firstAttribute="trailing" secondItem="SF7-Kg-Haz" secondAttribute="trailing" id="Ux5-vM-t7c"/>
-                            <constraint firstItem="JhB-Es-KRl" firstAttribute="centerX" secondItem="RTy-xm-1fZ" secondAttribute="centerX" id="ZW5-92-6bM"/>
-                            <constraint firstItem="JhB-Es-KRl" firstAttribute="leading" secondItem="meg-j2-1ZK" secondAttribute="leading" constant="130" id="bOM-g3-d0u"/>
-                            <constraint firstItem="JhB-Es-KRl" firstAttribute="top" secondItem="SF7-Kg-Haz" secondAttribute="bottom" constant="10" id="etO-41-sZX"/>
                             <constraint firstItem="SF7-Kg-Haz" firstAttribute="top" secondItem="TBi-8q-DE2" secondAttribute="bottom" constant="15" id="gl1-7I-a2o"/>
                             <constraint firstItem="TBi-8q-DE2" firstAttribute="top" secondItem="meg-j2-1ZK" secondAttribute="top" constant="15" id="igF-e7-u1N"/>
                             <constraint firstItem="SF7-Kg-Haz" firstAttribute="leading" secondItem="meg-j2-1ZK" secondAttribute="leading" id="iw6-Da-fko"/>

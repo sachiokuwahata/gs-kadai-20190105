@@ -14,8 +14,6 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
     
     var displayName = String()
     var userName = String()
-    var posts = [Post]()
-    var posst = Post()
     
     var menuDateKeys = [String]()
     var imageKyes: [String: String] = [:]
@@ -55,9 +53,11 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
         return cell
     }
     
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let dateData = self.menuDateKeys[indexPath.row]
-        let postFilter = self.posts.filter({$0.date == dateData})
+        let postFilter = PostController.shared.posts.filter({$0.date == dateData})
 
         PostController.shared.selectedPost = postFilter
         
@@ -87,7 +87,8 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
     
     func fetchPost() {
         
-        self.posts = [Post]()
+        PostController.shared.posts = [Post]()
+        PostController.shared.posst =  Post()
         let ref = Database.database().reference().child("postdata").child("\(self.userName)")
         let refImage = Database.database().reference().child("imageData").child("\(self.userName)")
         
@@ -98,19 +99,19 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
             }
             
             for (_,post) in postsnap! {
-                self.posst = Post()
+                PostController.shared.posst = Post()
                 
                 if let date = post["date"] as! String?, let weight = post["weight"] as! String?, let number = post["number"] as! String?, let menu = post["menu"]  as! String?,let key = post["key"] as! String?, let imageData = post["imageData"] as! String?{
                     
-                    self.posst.date = date
-                    self.posst.weight = weight
-                    self.posst.number = number
-                    self.posst.menu = menu
-                    self.posst.key = key
-                    self.posst.imageData = imageData
+                    PostController.shared.posst.date = date
+                    PostController.shared.posst.weight = weight
+                    PostController.shared.posst.number = number
+                    PostController.shared.posst.menu = menu
+                    PostController.shared.posst.key = key
+                    PostController.shared.posst.imageData = imageData
                     
                 }
-                self.posts.append(self.posst)
+                PostController.shared.posts.append(PostController.shared.posst)
             }
             refImage.observeSingleEvent(of: .value) { (snap,error) in
                 let postsnap = snap.value as? [String:NSDictionary]
@@ -148,7 +149,7 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
 
     
     func Calculation() {
-        let DicMenu = Dictionary(grouping: self.posts, by: { $0.date })
+        let DicMenu = Dictionary(grouping: PostController.shared.posts, by: { $0.date })
         self.menuDateKeys = [String](DicMenu.keys)
         if menuDateKeys == nil { return }
         print("MenuDate: \(self.menuDateKeys)")
