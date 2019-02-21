@@ -51,7 +51,9 @@ class EditViewController: UIViewController {
         let userName = self.userName
         let keys = self.key
         
-        RecordViewController.shared.dataSet(date: date!,weight: weight!,number: number!,menu: menu!,keys: keys,userName:userName,imageData:imageData)
+        RecordViewController.shared.dataSet(date: date!,weight: weight!,number: number!,menu: menu!,keys: keys,userName:userName)
+//        RecordViewController.shared.dataSet(date: date!,weight: weight!,number: number!,menu: menu!,keys: keys,userName:userName,imageData:imageData)
+
         self.navigationController?.popViewController(animated: true)
     }
 

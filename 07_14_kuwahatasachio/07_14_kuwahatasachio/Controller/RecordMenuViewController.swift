@@ -56,8 +56,10 @@ class RecordMenuViewController: UIViewController ,UITableViewDelegate ,UITableVi
             let number = post.number
             let weight = post.weight
             let date = post.date
-        
-            RecordViewController.shared.dataSet(date: date,weight: weight,number: number,menu: menu,keys: keys,userName:userName,imageData:data)
+        RecordViewController.shared.dataSet(date: date,weight: weight,number: number,menu: menu,keys: keys,userName:userName
+            )
+
+//            RecordViewController.shared.dataSet(date: date,weight: weight,number: number,menu: menu,keys: keys,userName:userName,imageData:data)
         }
         
         RecordViewController.shared.imageSet(date: self.Today, userName:self.userName, imageData:data)

@@ -15,5 +15,5 @@ class Post: NSObject {
     var number:String = String()
     var menu:String = String()
     var key:String = String()
-    var imageData:String = String()
+//    var imageData:String = String()
 }

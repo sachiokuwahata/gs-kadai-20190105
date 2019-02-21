@@ -63,11 +63,14 @@ class TotalingViewController: UIViewController ,UITableViewDataSource,UITableVie
             self.totaln.number = totalnumber
             self.totals.append(self.totaln)
             print("self.totaln.menu: \(self.totaln.menu) + / +  \(self.totaln.number)")
+            self.tableview.reloadData()
         }
+
         
     }
     
-    func fetchPost() {
+    func fetchMarkerup(completion:@escaping ()->Void) {
+//    func fetchPost() {
         
         PostController.shared.posts = [Post]()
         PostController.shared.posst =  Post()
@@ -91,13 +94,14 @@ class TotalingViewController: UIViewController ,UITableViewDataSource,UITableVie
                     PostController.shared.posst.number = number
                     PostController.shared.posst.menu = menu
                     PostController.shared.posst.key = key
-                    PostController.shared.posst.imageData = imageData
                     
                 }
                 PostController.shared.posts.append(PostController.shared.posst)
             }
-            self.prepareData()
-            self.tableview.reloadData()
+            // 終了後に実行したい関数
+            completion()
+// self.prepareData()
+// self.tableview.reloadData()
         }
         
     }
@@ -105,7 +109,8 @@ class TotalingViewController: UIViewController ,UITableViewDataSource,UITableVie
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.fetchPost()
+        self.fetchMarkerup(completion:prepareData)
+//        self.fetchPost()
     }
 
     

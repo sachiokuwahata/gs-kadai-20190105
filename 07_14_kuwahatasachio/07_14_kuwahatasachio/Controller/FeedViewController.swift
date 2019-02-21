@@ -108,7 +108,7 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
                     PostController.shared.posst.number = number
                     PostController.shared.posst.menu = menu
                     PostController.shared.posst.key = key
-                    PostController.shared.posst.imageData = imageData
+//                    PostController.shared.posst.imageData = imageData
                     
                 }
                 PostController.shared.posts.append(PostController.shared.posst)
