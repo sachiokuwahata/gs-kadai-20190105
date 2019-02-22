@@ -20,6 +20,7 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
         
     @IBOutlet weak var tableview: UITableView!
 
+    let refreshController = UIRefreshControl()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.menuDateKeys.count
@@ -86,7 +87,6 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
     }
     
     func fetchPost() {
-        
         PostController.shared.posts = [Post]()
         PostController.shared.posst =  Post()
         let ref = Database.database().reference().child("postdata").child("\(self.userName)")
@@ -130,8 +130,7 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-
+        
         // Facebook処理
         if let user = User.shared.firebaseAuth.currentUser?.uid {
             self.userName = user
@@ -159,15 +158,21 @@ class FeedViewController: UIViewController ,UITableViewDelegate ,UITableViewData
         
         tableview.delegate = self
         tableview.dataSource = self
-        
+        refreshController.attributedTitle = NSAttributedString(string: "引っ張って更新")
+        refreshController.addTarget(self, action: #selector(reflesh), for: .valueChanged)
+        tableview.addSubview(refreshController)
     }
     
     @IBAction func LogoutButton(_ sender: Any) {
-        
         let storyboardMain = UIStoryboard(name: "Main", bundle: nil)
         let LogoutVC = storyboardMain.instantiateViewController(withIdentifier: "LogoutVC")
         self.present(LogoutVC, animated: true, completion: nil)
-        
+    }
+    
+    @objc func reflesh() {
+        print("REFLE")
+        fetchPost()
+        refreshController.endRefreshing()
     }
 
 }

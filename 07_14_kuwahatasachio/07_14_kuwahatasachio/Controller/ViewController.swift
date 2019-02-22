@@ -47,9 +47,9 @@ class ViewController: UIViewController ,FBSDKLoginButtonDelegate, UserDelegate{
         self.showIndicator()
         
         if User.shared.firebaseAuth.currentUser?.uid == nil {
-            
+
             self.hideIndicator()
-            
+
             self.fbLoginBtn.delegate = self
             self.fbLoginBtn.readPermissions = ["public_profile", "email"]
             self.fbLoginBtn.center = self.view.center
