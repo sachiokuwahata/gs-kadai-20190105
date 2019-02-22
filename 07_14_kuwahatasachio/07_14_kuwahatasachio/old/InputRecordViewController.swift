@@ -57,7 +57,7 @@ class InputRecordViewController: UIViewController ,UIPickerViewDelegate,UIPicker
         if self.presentingViewController is UINavigationController {
             let nc = self.presentingViewController as! UINavigationController
             
-            let vc = nc.topViewController as! RecordMenuViewController
+            let vc = nc.topViewController as! RecordTrainingViewController
             vc.menuTextField.text = "スクワット"
             
             self.dismiss(animated: true, completion: nil)
