@@ -89,6 +89,7 @@
 		1C1FB04B21F85EE900F92866 /* old */ = {
 			isa = PBXGroup;
 			children = (
+				1C8B6F3621F59591003CA72B /* RecordMenuViewController.swift */,
 				1C1FB04721F8185B00F92866 /* InputRecordViewController.swift */,
 				1C7CD10921F7206A00B28AF2 /* InputViewController.swift */,
 			);
@@ -156,10 +157,9 @@
 				1C1FB04921F8471A00F92866 /* InputRecordvol2ViewController.swift */,
 				1CB33F2C221C546B0052FD71 /* RecordDateViewController.swift */,
 				1C8B6F3421F5957D003CA72B /* RecordPhotoViewController.swift */,
-				1C8B6F3621F59591003CA72B /* RecordMenuViewController.swift */,
+				1C8EB051221EFC8100DEC7CB /* RecordTrainingViewController.swift */,
 				1C6B4DAB21F97BF300AB4FEA /* TotalingViewController.swift */,
 				1C409CC321F5ACFD0029CBD0 /* EditViewController.swift */,
-				1C8EB051221EFC8100DEC7CB /* RecordTrainingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

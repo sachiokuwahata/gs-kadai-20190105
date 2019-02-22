@@ -44,5 +44,20 @@ extension UIViewController {
         }
         view.removeFromSuperview()
     }
+}
+
+extension UIViewController {
+
+    func displayAlert(title: String, message: String) {
+        
+        let okText = "OK"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okayButton = UIAlertAction(title: okText, style: UIAlertAction.Style.cancel, handler: nil)
+        alert.addAction(okayButton)
+        
+        present(alert, animated: true, completion: nil)
+    }
 
 }
+

@@ -74,6 +74,10 @@ class RecordTrainingViewController: UIViewController ,UITableViewDelegate ,UITab
         self.posst.number = self.numberText
         self.posst.menu = self.menuText
         
+        guard self.validate() else {
+            return
+        }
+        
         self.posts.append(self.posst)
         
         UserDefaults.standard.set("0", forKey: "selectWeight")
@@ -83,6 +87,7 @@ class RecordTrainingViewController: UIViewController ,UITableViewDelegate ,UITab
         menuTextField.text = UserDefaults.standard.object(forKey: "selectMenu") as! String
         weightTextField.text = UserDefaults.standard.object(forKey: "selectWeight") as! String
         numberTextField.text = UserDefaults.standard.object(forKey: "selectNumber") as! String
+        
         
         print(self.posts)
         self.tableview.reloadData()
@@ -105,6 +110,7 @@ class RecordTrainingViewController: UIViewController ,UITableViewDelegate ,UITab
         menuTextField.text = menuText
         weightTextField.text = weightText
         numberTextField.text = numberText
+        
     }
     
     override func viewDidLoad() {
@@ -157,6 +163,32 @@ class RecordTrainingViewController: UIViewController ,UITableViewDelegate ,UITab
         self.present(inputMenu,animated: true, completion: nil)
     }
 
+
+ private func validate() -> Bool {
+    
+    guard self.posst.weight != "0", self.posst.weight != "" else {
+            let title:String = "重さを入力して下さい。"
+            let message:String = ""
+            displayAlert(title: title, message: message)
+        return false
+    }
+
+    guard self.posst.number != "0", self.posst.number != "" else {
+        let title:String = "数字を入力して下さい。"
+        let message:String = ""
+        displayAlert(title: title, message: message)
+        return false
+    }
+
+    guard self.posst.menu != "---------", self.posst.number != "" else {
+        let title:String = "メニューを入力して下さい。"
+        let message:String = ""
+        displayAlert(title: title, message: message)
+        return false
+    }
+    
+    return true
+    }
     
     
 }
